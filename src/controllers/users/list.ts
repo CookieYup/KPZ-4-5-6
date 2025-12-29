@@ -1,8 +1,8 @@
 // filepath: /Users/marrybye/Documents/Универ/КПЗ/KPZ-4/src/controllers/users/list.ts
 import { Request, Response, NextFunction } from 'express';
 
-import { UserService } from 'service/UserService';
-import { UserResponseDTO } from '../../dto/user_response_dto';
+import { UserService } from '../../service/UserService';
+import { UserResponseDTO } from '../../dto/UserResponseDTO';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
   const userService = new UserService();

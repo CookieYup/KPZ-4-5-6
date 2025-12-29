@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import validator from 'validator';
 
-import { ConstsUser } from 'consts/ConstsUser';
-import { CustomError } from 'utils/response/custom-error/CustomError';
-import { ErrorValidation } from 'utils/response/custom-error/types';
+import { ConstsUser } from '../../../consts/ConstsUser';
+import { CustomError } from '../../../utils/response/custom-error/CustomError';
+import { ErrorValidation } from '../../../utils/response/custom-error/types';
 
 export const validatorRegister = (req: Request, res: Response, next: NextFunction) => {
   let { email, password, passwordConfirm } = req.body;

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { CustomError } from 'utils/response/custom-error/CustomError';
+import { CustomError } from '../../../utils/response/custom-error/CustomError';
 
 export const validatorCreate = async (req: Request, res: Response, next: NextFunction) => {
   const { username, name, email, password } = req.body;

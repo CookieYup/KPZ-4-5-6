@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { CustomError } from 'utils/response/custom-error/CustomError';
+import { CustomError } from '../../../utils/response/custom-error/CustomError';
 
 export const validatorShow = async (req: Request, res: Response, next: NextFunction) => {
   const id = req.params.id;

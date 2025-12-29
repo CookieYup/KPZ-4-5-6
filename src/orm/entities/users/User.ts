@@ -1,68 +1,28 @@
-import bcrypt from 'bcryptjs';
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  OneToOne,
-  OneToMany,
-  JoinColumn,
-} from 'typeorm';
-
-import { Role, Language } from './types';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
 
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    unique: true,
-  })
+  @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
-  @Column({
-    nullable: true,
-    unique: true,
-  })
-  username: string;
+  @Column()
+  firstName: string;
 
-  @Column({
-    nullable: true,
-  })
-  name: string;
+  @Column()
+  lastName: string;
 
-  @Column({
-    default: 'STANDARD' as Role,
-    length: 30,
-  })
+  @Column({ default: 'USER' })
   role: string;
 
-  @Column({
-    default: 'en-US' as Language,
-    length: 15,
-  })
+  @Column({ default: 'ru' })
   language: string;
 
   @CreateDateColumn()
   created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  setLanguage(language: Language) {
-    this.language = language;
-  }
-
-  hashPassword() {
-    this.password = bcrypt.hashSync(this.password, 8);
-  }
-
-  checkIfPasswordMatch(unencryptedPassword: string) {
-    return bcrypt.compareSync(unencryptedPassword, this.password);
-  }
 }
